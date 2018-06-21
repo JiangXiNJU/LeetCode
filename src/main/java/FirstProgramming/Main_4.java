@@ -28,6 +28,20 @@ package FirstProgramming;
 
  输出例子1:
  12
+
+ 10 20
+ 1 5
+ 1 3
+ 1 5
+ 1 5
+ 1 5
+ 1 1
+ 1 3
+ 1 2
+ 1 2
+ 1 1
+
+ 2655
  */
 import java.util.Scanner;
 
@@ -39,13 +53,17 @@ public class Main_4 {
             if(m>=range[start][0]&&m<=range[start][1]) return 1;
             else return 0;
         }
+        if(start<end&&m<range[start][0]) return 0;
         long sum=0;
-        if(range[start][0]!=0) sum+=recur(range,start+1,end,m);
         for(int i=range[start][0];i<=range[start][1]&&i<=m;i++){
-            if(i==m) sum+=1;
-            else sum+=recur(range,start+1,end,m-i);
+            sum+=recur(range,start+1,end,m-i);
         }
         return sum;
+    }
+    public static long dp(int [][] range,int n,int m){
+        long[][] dp=new long[n][m];
+        
+        return dp[n-1][m-1];
     }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -58,6 +76,6 @@ public class Main_4 {
             range[i][0]=scan.nextInt();
             range[i][1]=scan.nextInt();
         }
-        out.println(recur(range,0,n-1,m));
+        out.println(dp(range,n,m));
     }
 }
