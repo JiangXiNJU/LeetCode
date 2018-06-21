@@ -1,3 +1,5 @@
+package Sword2Offer;
+
 import java.util.Scanner;
 
 import static java.lang.System.out;

@@ -1,3 +1,5 @@
+package Sword2Offer;
+
 import java.util.LinkedList;
 import java.util.Queue;
 import java.util.Scanner;
@@ -9,7 +11,7 @@ import static java.lang.System.out;
  */
 
 public class Solution_BinarySearchTree2LinkedList {
-    public TreeNode most_right(TreeNode t,TreeNode root){
+    public TreeNode most_right(TreeNode t, TreeNode root){
         if(t==null) return t;
         if(t.right==null) {
             t.right=root;
@@ -17,7 +19,7 @@ public class Solution_BinarySearchTree2LinkedList {
         }
         return most_right(t.right,root);
     }
-    public TreeNode most_left(TreeNode t,TreeNode root){
+    public TreeNode most_left(TreeNode t, TreeNode root){
         if(t==null) return t;
         if(t.left==null) {
             t.left=root;

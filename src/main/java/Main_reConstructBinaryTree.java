@@ -42,7 +42,7 @@ public class Main_reConstructBinaryTree {
             return reConstructCore(pre,in,right,pre_left_farthest+1,root_in_index+1,in_b);
         }
     }
-    public TreeNode reConstructBinaryTree(int [] pre,int [] in) {
+    public TreeNode reConstructBinaryTree(int [] pre, int [] in) {
         if(pre.length<=0||in.length<=0) return null;
         TreeNode root=new TreeNode(pre[0]);
         reConstructCore(pre,in,root,0,0,in.length-1);
