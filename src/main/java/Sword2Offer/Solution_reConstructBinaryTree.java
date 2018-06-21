@@ -1,3 +1,5 @@
+package Sword2Offer;
+
 import java.util.Scanner;
 
 /**
@@ -6,7 +8,7 @@ import java.util.Scanner;
 
 
 
-public class Main_reConstructBinaryTree {
+public class Solution_reConstructBinaryTree {
     public int findnode(int[] in,int target,int f,int b){
         for(int i=f;i<=b;i++){
             if(in[i]==target) return i;
@@ -57,7 +59,7 @@ public class Main_reConstructBinaryTree {
 //        for(int i=0;i<k;i++) in[i]=scan.nextInt();
         int[] pre={1,2,4,7,3,5,6,8};
         int[] in={4,7,2,1,5,3,8,6};
-        Main_reConstructBinaryTree tmp=new Main_reConstructBinaryTree();
+        Solution_reConstructBinaryTree tmp=new Solution_reConstructBinaryTree();
         tmp.reConstructBinaryTree(pre,in);
     }
 

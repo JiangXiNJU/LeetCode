@@ -1,9 +1,11 @@
+package Sword2Offer;
+
 import static java.lang.System.out;
 
 /**
  * Created by cycy on 2018/4/3.
  */
-public class Main_minNumberInRotateArray {
+public class Solution_minNumberInRotateArray {
 
     public int minNumberInRotateArray(int [] array) {
         if(array.length==0) return 0;
@@ -32,7 +34,7 @@ public class Main_minNumberInRotateArray {
 
     public static void main(String[] args){
         int[] array={3,3,0,3,3};
-        Main_minNumberInRotateArray tmp=new Main_minNumberInRotateArray();
+        Solution_minNumberInRotateArray tmp=new Solution_minNumberInRotateArray();
         out.println(tmp.minNumberInRotateArray(array));
     }
 }

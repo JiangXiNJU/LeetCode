@@ -1,3 +1,5 @@
+package Sword2Offer;
+
 import java.util.Scanner;
 
 import static java.lang.System.out;
@@ -5,7 +7,7 @@ import static java.lang.System.out;
 /**
  * Created by cycy on 2018/4/2.
  */
-public class Main_replace_space {
+public class Solution_replace_space {
     public static String replaceSpace(StringBuffer str) {
         if(str==null||str.equals("")) return "";
 //        out.println("begin");

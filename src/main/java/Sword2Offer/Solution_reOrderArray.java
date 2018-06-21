@@ -1,9 +1,11 @@
+package Sword2Offer;
+
 import static java.lang.System.out;
 
 /**
  * Created by cycy on 2018/4/4.
  */
-public class Main_reOrderArray {
+public class Solution_reOrderArray {
     public void reOrderArray(int [] array) {
         int len=array.length;
         int[] even=new int[len];
@@ -22,7 +24,7 @@ public class Main_reOrderArray {
         System.arraycopy(even,0,array,lenofodd,lenofeven);
     }
     public static void main(String[] args){
-        Main_reOrderArray tmp=new Main_reOrderArray();
+        Solution_reOrderArray tmp=new Solution_reOrderArray();
         int [] array={2,2,2,2};
         tmp.reOrderArray(array);
         for(int i=0;i<array.length;i++){
