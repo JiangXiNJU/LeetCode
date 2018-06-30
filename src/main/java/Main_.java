@@ -11,6 +11,5 @@ public class Main_ {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         out.println();
-        String[] array = {"3334", "3", "333332"};
     }
 }
