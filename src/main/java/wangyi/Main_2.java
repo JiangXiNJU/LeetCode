@@ -26,15 +26,62 @@ package wangyi;
  输出例子1:
  0 1 3 10
  */
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static java.lang.System.out;
 
 public class Main_2 {
+    public static int get(int[] index,int[][] chese,int num){
+        int[] x=new int[num];
+        int[] y=new int[num];
+        for(int i=0;i<num;i++){
+            x[i]=chese[index[i]][0];
+            y[i]=chese[index[i]][1];
+        }
+        Arrays.sort(x);
+        Arrays.sort(y);
+        int middle=num/2;
+        int mid_x=x[middle];
+        int mid_y=y[middle];
+        int res=0;
+        for(int i=0;i<num;i++){
+            res+=x[i]-mid_x>=0?x[i]-mid_x:mid_x-x[i];
+            res+=y[i]-mid_y>=0?y[i]-mid_y:mid_y-y[i];
+        }
+        return res;
+    }
     public static int find(int[][] chese,int num){
         int len=chese.length;
         if(num==1) return 0;
-
+        int[] index=new int[num];
+        int min=Integer.MAX_VALUE;
+        int len_mid=1;
+        index[0]=0;
+        while(len_mid<num){
+            index[len_mid]=index[len_mid-1]+1;
+            len_mid++;
+        }
+        while(len_mid>0){
+            if(len_mid==num){
+//                for(int i=0;i<num;i++)
+//                    out.print(index[i]+" ");
+//                out.println();
+                int res=get(index,chese,num);
+                if(res<min) min=res;
+            }
+            if(index[len_mid-1]+(num-len_mid)<len-1){
+                index[len_mid-1]++;
+                while(len_mid<num){
+                    index[len_mid]=index[len_mid-1]+1;
+                    len_mid++;
+                }
+            }
+            else{
+                len_mid--;
+            }
+        }
+        return min;
     }
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
@@ -47,7 +94,10 @@ public class Main_2 {
         }
         for(int i=0;i<len;i++)
             chese[i][1]=scan.nextInt();
+        for(int i=1;i<len;i++){
+            out.print(find(chese,i)+" ");
+        }
+        out.println(find(chese,len));
 
-        
     }
 }

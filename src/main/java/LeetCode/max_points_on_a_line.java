@@ -29,7 +29,7 @@ class line{
     }
 }
 
-public class Solution_max_points_on_a_line {
+public class max_points_on_a_line {
     public int maxPoints(Point[] points) {
         if(points.length<=2) return points.length;
         int max=2;
@@ -73,7 +73,7 @@ public class Solution_max_points_on_a_line {
         Point[] points=new Point[array.length];
         for(int i=0;i<array.length;i++)
             points[i]=new Point(array[i][0],array[i][1]);
-        Solution_max_points_on_a_line s=new Solution_max_points_on_a_line();
+        max_points_on_a_line s=new max_points_on_a_line();
         s.maxPoints(points);
 
     }
