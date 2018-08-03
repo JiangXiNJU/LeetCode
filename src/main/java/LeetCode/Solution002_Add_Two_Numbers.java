@@ -7,7 +7,7 @@ import static java.lang.System.out;
 /**
  * Created by cycy on 2018/7/5.
  */
-public class Add_Two_Numbers {
+public class Solution002_Add_Two_Numbers {
     public ListNode addTwoNumbers(ListNode l1, ListNode l2) {
         if(l1==null) return l2;
         if(l2==null) return l1;
@@ -54,7 +54,7 @@ public class Add_Two_Numbers {
 
     public static void main(String[] args) {
         Scanner scan=new Scanner(System.in);
-        Add_Two_Numbers s=new Add_Two_Numbers();
+        Solution002_Add_Two_Numbers s=new Solution002_Add_Two_Numbers();
 
         ListNode list1=new ListNode(scan.nextInt());
         ListNode node1=list1;
