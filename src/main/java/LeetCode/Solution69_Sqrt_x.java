@@ -26,32 +26,14 @@ import static java.lang.System.out;
 public class Solution69_Sqrt_x {
     public int mySqrt(int x) {
         if(x==0) return 0;
-        int k=0,base=1;
-        while(k<32){
-            out.println("x: "+x+" , "+"base: "+base+" , k: "+k);
-            if(x>base){
-                base<<=2;
-                k+=2;
-            }
-            else  break;
+        int f=1,b=x;
+        while(f<=b){
+            long mid=f+(b-f)/2;
+            if(mid*mid<x) f=(int)mid+1;
+            else if(mid*mid>x) b=(int)mid-1;
+            else return (int)mid;
         }
-        if(base==x){
-            return 1<<(k/2);
-        }
-        base>>=2;
-        k=k/2-1;
-        int base_2=1<<(2*k);
-
-        int from=k-1;
-        while(from>=0){
-            int square_base_add2powfrom=base_2+base<<(from+1)+1<<(from*2);
-            if(square_base_add2powfrom<x){
-                base_2=square_base_add2powfrom;
-                base=base+1<<from;
-            }
-            from--;
-        }
-        return base;
+        return f-1;
     }
 
     public static void main(String[] args) {
