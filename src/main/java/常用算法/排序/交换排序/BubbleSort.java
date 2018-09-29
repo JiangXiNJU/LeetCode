@@ -1,7 +1,8 @@
 package 常用算法.排序.交换排序;
 
 /**
- * Created by cycy on 2018/9/3.
+ * 时间复杂度 O(n*n)
+ * 正序最佳为O(n)，逆序最差为O(n*n)
  */
 public class BubbleSort {
     public static void swap(int[] nums,int a,int b){
@@ -27,7 +28,7 @@ public class BubbleSort {
             tobe_continued=false;
             for(int j=0;j<len-1;j++){
                 if(nums[j]>nums[j+1]) {
-                    swap(nums,i,j);
+                    swap(nums,j+1,j);
                     tobe_continued=true;
                 }
             }
@@ -43,7 +44,7 @@ public class BubbleSort {
             tobe_continued=false;
             for(int j=0;j<len-1-i;j++){
                 if(nums[j]>nums[j+1]) {
-                    swap(nums,i,j);
+                    swap(nums,j+1,j);
                     tobe_continued=true;
                 }
             }
@@ -54,7 +55,7 @@ public class BubbleSort {
     public static void cocktail_sort(int[] nums){
         if(nums==null||nums.length<2) return;
         int begin=0,end=nums.length-1;
-        while(begin<=end){
+        while(begin<end){
             int endt=begin;
             for(int i=begin;i<end;i++){
                 if(nums[i]>nums[i+1]){

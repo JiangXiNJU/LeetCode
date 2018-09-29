@@ -16,7 +16,10 @@ package LeetCode;
  Explanation: Because the new interval [4,8] overlaps with [3,5],[6,7],[8,10].
  */
 
+import java.util.ArrayList;
 import java.util.List;
+
+import static java.util.Collections.addAll;
 
 /**
  * Definition for an interval.
@@ -29,43 +32,31 @@ class Interval {
 }
 
 public class Solution057_Insert_Interval {
-    public int binarysearch(List<Interval> intervals,int target,int type){
-        if(type==1){//find front pos
-            if(intervals.size()==1){
-                if(intervals.get(0).start<target) return 0;
-                else  return -1;
-            }
-            if(intervals.get(intervals.size()-1).start<target) return intervals.size()-1;
-
-            int f=0,b=intervals.size();
-            while(f+1<b){
-                int mid=(f+b)/2;
-                if(intervals.get(mid).start<target) f=mid;
-                else if(intervals.get(mid).start>target) b=mid;
-                else return mid-1;
-            }
-            if(intervals.get(f).start<target) return f;
-            else return f-1;
+    public int binarysearch(ArrayList<Interval> list,int target,int dir){
+        int f=0,b=list.size()-1;
+        while(f<=b){
+            int mid_index=f+(b-f)/2;
+            Interval mid=list.get(mid_index);
+            if(mid.start<=target&&mid.end>=target) return mid_index;
+            if(mid.end<target) f=mid_index+1;
+            else b=mid_index-1;
         }
-        else{//find back pos
-            if(intervals.size()==1){
-                if(intervals.get(0).end<target) return 0;
-                else  return -1;
-            }
-            if(intervals.get(intervals.size()-1).start<target) return intervals.size()-1;
-
-            int f=0,b=intervals.size();
-            while(f+1<b){
-                int mid=(f+b)/2;
-                if(intervals.get(mid).start<target) f=mid;
-                else if(intervals.get(mid).start>target) b=mid;
-                else return mid-1;
-            }
-            if(intervals.get(f).start<target) return f;
-            else return f-1;
-        }
+        if(dir==0) return f;
+        else return f-1;
     }
     public List<Interval> insert(List<Interval> intervals, Interval newInterval) {
-        return intervals;
+        ArrayList<Interval> intervals1=new ArrayList<Interval>();
+        intervals.addAll(intervals);
+        int n=intervals.size();
+        int start=binarysearch(intervals1,newInterval.start,0);
+        int end=binarysearch(intervals1,newInterval.end,1);
+
+        ArrayList<Interval> res=new ArrayList<Interval>();
+        res.addAll(intervals1.subList(0,start));
+        int real_start=newInterval.start<=intervals1.get(start).start?newInterval.start:intervals1.get(start).start;
+        int real_end=newInterval.end>=intervals1.get(end).end?newInterval.end:intervals1.get(end).end;
+        res.add(new Interval(real_start,real_end));
+        res.addAll(intervals.subList(end+1,n));
+        return res;
     }
 }

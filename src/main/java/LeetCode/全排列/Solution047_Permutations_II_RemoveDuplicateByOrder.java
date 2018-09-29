@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import static 常用算法.排序.交换排序.BubbleSort.cocktail_sort;
+
 /**
  * Created by cycy on 2018/9/3.
  * 比用Set去重更快！
@@ -47,8 +49,10 @@ public class Solution047_Permutations_II_RemoveDuplicateByOrder {
         ArrayList<List<Integer>> res=new ArrayList<List<Integer>>();
         if(nums==null||nums.length==0) return res;
         Arrays.sort(nums);
+//        cocktail_sort(nums);
         res.add(fill(nums));
         while(nextPermutation(nums)) res.add(fill(nums));
         return res;
     }
+
 }

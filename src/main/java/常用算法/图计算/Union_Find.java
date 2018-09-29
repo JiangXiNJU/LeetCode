@@ -18,6 +18,14 @@ public class Union_Find {
         }
         return root;
     }
+
+    public static int find_recur(int x){
+        int root=pre[x];
+        if(root!=pre[root]) root=find_recur(root);
+        pre[x]=root;
+        return root;
+    }
+
     public static void union(int x,int y){
         int fx=find(x),fy=find(y);
         if(fx<fy) {
